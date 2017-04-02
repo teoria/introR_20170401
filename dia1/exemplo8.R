@@ -32,9 +32,3 @@ carroRuim <- base$mpg < limiar
 
 base[ carroRuim , ]
 
-library(dplyr)
-library(RSQLite)
-nycflights13_sqlite()
-con <- dbConnect(RSQLite::SQLite(), ":memory:")
-
-
