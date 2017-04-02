@@ -1,0 +1,89 @@
+---
+title: "Plots Airquality"
+author: "R"
+date: "April 2, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#bibliotecas
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+
+## Carregando base de dados
+```{r}
+base <- read.csv("airquality_limpa.csv" )
+base$X <- NULL
+```
+
+
+## Resumo da base
+```{r}
+
+str(base)
+
+summary(base)
+```
+
+
+```{r}
+plot( base$Temp , base$Wind )
+```
+
+```{r}
+g <- ggplot( base , aes(   Wind,Temp )  ) 
+
+g + geom_point() 
+
+g + geom_line()
+
+g + geom_line() + geom_point() 
+```
+
+```{r}
+base$Month
+
+mes5 <- base$Month == 5
+
+dadosMes5 <- base[ mes5 ,]
+
+#mean(base$Temp)
+
+g <- ggplot( dadosMes5 , aes(  Wind ,Temp)  ) 
+
+g + geom_point()
+
+```
+
+```{r}
+
+
+mes7 <- base$Month == 7
+
+dadosMes7 <- base[ mes7 ,]
+
+#mean(base$Temp)
+
+g <- ggplot( dadosMes7 , aes(  Wind ,Temp)  ) 
+
+g + geom_point() + geom_line()
+
+```
+
+
+```{r}
+
+g <- ggplot( base , aes(  Wind ,Temp , colour = factor(Month))  ) 
+
+g + geom_point() + geom_line() + facet_grid( . ~ Month)
+
+g + geom_point() + geom_line() + facet_grid(  Month ~ .) 
+
+```
+

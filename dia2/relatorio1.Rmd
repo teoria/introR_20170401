@@ -1,0 +1,94 @@
+---
+title: "Limpeza de base"
+author: "R"
+date: "April 2, 2017"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bibliotecas
+```{r}
+require(datasets)
+```
+
+## Base 
+Description
+
+Daily air quality measurements in New York, May to September 1973.
+
+Usage
+
+airquality
+Format
+
+A data frame with 154 observations on 6 variables.
+
+[,1]	**Ozone**	numeric	Ozone (ppb)
+
+[,2]	Solar.R	numeric	Solar R (lang)
+
+[,3]	Wind	numeric	Wind (mph)
+
+[,4]	Temp	numeric	Temperature (degrees F)
+
+[,5]	Month	numeric	Month (1--12)
+
+[,6]	Day	numeric	Day of month (1--31)
+
+```{r}
+base <- airquality
+```
+
+## Exploração inicial
+```{r}
+
+# Nomes das colunas
+names(base)
+
+# Estrutura da base
+str(base)
+
+# Resumo da base
+summary(base)
+
+
+
+# Remover itens incompletos
+completos <- complete.cases( base )
+#sum(completos)
+baseCompleta <- base[ completos , ]
+
+
+# Com Ozone
+#comOzone <- !is.na( base$Ozone )
+#View(base[ comOzone , ])
+
+
+head(baseCompleta)
+
+str(baseCompleta)
+```
+
+# Resumo da base
+Esta base contém `r dim(baseCompleta)[1] ` resgistros sobre...
+
+```{r}
+pairs(baseCompleta)
+```
+
+```{r}
+plot( baseCompleta$Temp , baseCompleta$Wind )
+```
+
+
+```{r eval=FALSE}
+# Salvando base tratada
+
+write.csv( baseCompleta , "airquality_limpa.csv"  )
+```
+

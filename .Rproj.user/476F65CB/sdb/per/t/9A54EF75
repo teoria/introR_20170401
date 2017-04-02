@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"R Notebook\"\noutput: html_notebook\n---\n\nThis is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. \n\nTry executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. \n\n```{r}\nplot(cars)\n```\n\n```{r}\nggplot( mtcars , aes( mpg , wt ))+geom_line()\n```\n\n\nAdd a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.\n```{r}\nsummary(mtcars)\n```\n\n```{r eval=FALSE}\nmtcars$mpg\n```\n\n\n```{r}\nlibrary(DT)\nDT::datatable(mtcars)\n```\n\n\nWhen you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).\n",
+    "created" : 1491166379583.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3536321757",
+    "id" : "9A54EF75",
+    "lastKnownWriteTime" : 1491166806,
+    "last_content_update" : 1491166806785,
+    "path" : "~/GitHub/introR_20170401/dia2/notebook.Rmd",
+    "project_path" : "dia2/notebook.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,108 @@
+---
+title: "Titanic"
+author: "R"
+date: "April 2, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Biblioteca
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+## Base 
+```{r}
+base <- read.csv(file = "base/titanic.csv")
+
+str(base)
+
+summary(base)
+
+
+```
+
+
+
+
+```{r eval=FALSE}
+
+#filter( base , Sex == "male" )
+
+
+#select( base , Survived, Sex)
+
+base$Pclass <- as.factor(base$Pclass)
+
+sobreviventesHomem <- base %>% filter( Sex == "male" & Survived == 1 ) 
+ 
+
+summary(sobreviventesHomem)
+
+
+
+
+sobreviventesMulher <- base %>% filter( Sex == "female" & Survived == 1 ) 
+ 
+
+summary(sobreviventesMulher)
+
+
+
+ggplot( base, aes( Pclass , fill= Sex ) ) + geom_bar()
+
+sobreviventes <- base %>% filter( Survived == 1)
+ggplot( sobreviventes, aes( Pclass , fill= Sex ) ) + geom_bar()
+
+
+
+#base %>% filter( Sex == "male" & Survived == 0 )
+
+```
+
+```{r }
+
+summary(base$Age)
+
+limiteIdade <- 18
+
+#mean( base[ base$Age < limiteIdade , ]$Age  , na.rm = T)
+
+
+criancas <- base %>% 
+        filter( Age < limiteIdade) %>%
+        group_by(Sex , Survived) %>% 
+        summarise( total = n() , avg = mean(Age) )
+
+
+criancas 
+ggplot( criancas, aes( Sex , total , fill= factor(Survived) ) ) + geom_bar(stat="identity")
+
+
+
+totalCrianca <- dim(base %>% filter( Age < limiteIdade))[1]
+totalCriancaSobreviveram <- dim(base %>% filter( Age < limiteIdade & Survived == 1))[1]
+
+
+
+totalMeninos <- criancas %>% filter(Sex == "male")%>%select(total)%>%summarise( meninos = sum(total))
+totalMeninas <- criancas %>% filter(Sex == "female")%>%select(total)%>%summarise( meninos = sum(total))
+
+
+totalMeninosSobrevivente <- criancas %>% filter(Sex == "male" & Survived == 1)%>%select(total)%>%summarise( meninos = sum(total))
+totalMeninasSobrevivente <- criancas %>% filter(Sex == "female"& Survived == 1)%>%select(total)%>%summarise( meninos = sum(total))
+
+
+
+
+```
+
+No titanic tinham `r totalCrianca ` criancas ( `r totalMeninos$meninos ` meninos e `r totalMeninas$meninos ` meninas ) e sobreviveram `r totalCriancaSobreviveram ` ( `r totalMeninosSobrevivente$meninos ` meninos e `r totalMeninasSobrevivente$meninos ` meninas).
+
+
+
+

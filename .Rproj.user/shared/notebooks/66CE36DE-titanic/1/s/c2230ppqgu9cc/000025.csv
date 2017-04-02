@@ -1,0 +1,4 @@
+"0","totalMeninasSobrevivente <- criancas %>% filter(Sex == ""female""& Survived == 1)%>%select(total)%>%summarise( meninos = sum(total))
+"
+"2","Adding missing grouping variables: `Sex`
+"

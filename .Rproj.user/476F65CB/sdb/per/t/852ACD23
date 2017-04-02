@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Limpeza de base\"\nauthor: \"R\"\ndate: \"April 2, 2017\"\noutput:\n  html_document: default\n  word_document: default\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n## Bibliotecas\n```{r}\nrequire(datasets)\n```\n\n## Base \nDescription\n\nDaily air quality measurements in New York, May to September 1973.\n\nUsage\n\nairquality\nFormat\n\nA data frame with 154 observations on 6 variables.\n\n[,1]\t**Ozone**\tnumeric\tOzone (ppb)\n\n[,2]\tSolar.R\tnumeric\tSolar R (lang)\n\n[,3]\tWind\tnumeric\tWind (mph)\n\n[,4]\tTemp\tnumeric\tTemperature (degrees F)\n\n[,5]\tMonth\tnumeric\tMonth (1--12)\n\n[,6]\tDay\tnumeric\tDay of month (1--31)\n\n```{r}\nbase <- airquality\n```\n\n## Exploração inicial\n```{r}\n\n# Nomes das colunas\nnames(base)\n\n# Estrutura da base\nstr(base)\n\n# Resumo da base\nsummary(base)\n\n\n\n# Remover itens incompletos\ncompletos <- complete.cases( base )\n#sum(completos)\nbaseCompleta <- base[ completos , ]\n\n\n# Com Ozone\n#comOzone <- !is.na( base$Ozone )\n#View(base[ comOzone , ])\n\n\nhead(baseCompleta)\n\nstr(baseCompleta)\n```\n\n# Resumo da base\nEsta base contém `r dim(baseCompleta)[1] ` resgistros sobre...\n\n```{r}\npairs(baseCompleta)\n```\n\n```{r}\nplot( baseCompleta$Temp , baseCompleta$Wind )\n```\n\n\n```{r eval=FALSE}\n# Salvando base tratada\n\nwrite.csv( baseCompleta , \"airquality_limpa.csv\"  )\n```\n\n",
+    "created" : 1491166268218.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2179583100",
+    "id" : "852ACD23",
+    "lastKnownWriteTime" : 1491166282,
+    "last_content_update" : 1491166282981,
+    "path" : "~/GitHub/introR_20170401/dia2/relatorio1.Rmd",
+    "project_path" : "dia2/relatorio1.Rmd",
+    "properties" : {
+        "last_setup_crc32" : "191A521Ebb338d19",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

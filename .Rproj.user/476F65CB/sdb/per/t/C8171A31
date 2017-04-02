@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Titanic\"\nauthor: \"R\"\ndate: \"April 2, 2017\"\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n## Biblioteca\n```{r}\nlibrary(dplyr)\nlibrary(ggplot2)\n```\n\n## Base \n```{r}\nbase <- read.csv(file = \"base/titanic.csv\")\n\nstr(base)\n\nsummary(base)\n\n\n```\n\n\n\n\n```{r eval=FALSE}\n\n#filter( base , Sex == \"male\" )\n\n\n#select( base , Survived, Sex)\n\nbase$Pclass <- as.factor(base$Pclass)\n\nsobreviventesHomem <- base %>% filter( Sex == \"male\" & Survived == 1 ) \n \n\nsummary(sobreviventesHomem)\n\n\n\n\nsobreviventesMulher <- base %>% filter( Sex == \"female\" & Survived == 1 ) \n \n\nsummary(sobreviventesMulher)\n\n\n\nggplot( base, aes( Pclass , fill= Sex ) ) + geom_bar()\n\nsobreviventes <- base %>% filter( Survived == 1)\nggplot( sobreviventes, aes( Pclass , fill= Sex ) ) + geom_bar()\n\n\n\n#base %>% filter( Sex == \"male\" & Survived == 0 )\n\n```\n\n```{r }\n\nsummary(base$Age)\n\nlimiteIdade <- 18\n\n#mean( base[ base$Age < limiteIdade , ]$Age  , na.rm = T)\n\n\ncriancas <- base %>% \n        filter( Age < limiteIdade) %>%\n        group_by(Sex , Survived) %>% \n        summarise( total = n() , avg = mean(Age) )\n\n\ncriancas \nggplot( criancas, aes( Sex , total , fill= factor(Survived) ) ) + geom_bar(stat=\"identity\")\n\n\n\ntotalCrianca <- dim(base %>% filter( Age < limiteIdade))[1]\ntotalCriancaSobreviveram <- dim(base %>% filter( Age < limiteIdade & Survived == 1))[1]\n\n\n\ntotalMeninos <- criancas %>% filter(Sex == \"male\")%>%select(total)%>%summarise( meninos = sum(total))\ntotalMeninas <- criancas %>% filter(Sex == \"female\")%>%select(total)%>%summarise( meninos = sum(total))\n\n\ntotalMeninosSobrevivente <- criancas %>% filter(Sex == \"male\" & Survived == 1)%>%select(total)%>%summarise( meninos = sum(total))\ntotalMeninasSobrevivente <- criancas %>% filter(Sex == \"female\"& Survived == 1)%>%select(total)%>%summarise( meninos = sum(total))\n\n\n\n\n```\n\nNo titanic tinham `r totalCrianca ` criancas ( `r totalMeninos$meninos ` meninos e `r totalMeninas$meninos ` meninas ) e sobreviveram `r totalCriancaSobreviveram ` ( `r totalMeninosSobrevivente$meninos ` meninos e `r totalMeninasSobrevivente$meninos ` meninas).\n\n\n\n\n",
+    "created" : 1491163191929.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1100445855",
+    "id" : "C8171A31",
+    "lastKnownWriteTime" : 1491166345,
+    "last_content_update" : 1491166353383,
+    "path" : "~/GitHub/introR_20170401/dia2/titanic.Rmd",
+    "project_path" : "dia2/titanic.Rmd",
+    "properties" : {
+        "last_setup_crc32" : "191A521Ebb338d19",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

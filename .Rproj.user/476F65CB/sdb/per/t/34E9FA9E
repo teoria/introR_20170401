@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Plots Airquality\"\nauthor: \"R\"\ndate: \"April 2, 2017\"\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n#bibliotecas\n```{r}\nlibrary(ggplot2)\nlibrary(dplyr)\n```\n\n\n## Carregando base de dados\n```{r}\nbase <- read.csv(\"airquality_limpa.csv\" )\nbase$X <- NULL\n```\n\n\n## Resumo da base\n```{r}\n\nstr(base)\n\nsummary(base)\n```\n\n\n```{r}\nplot( base$Temp , base$Wind )\n```\n\n```{r}\ng <- ggplot( base , aes(   Wind,Temp )  ) \n\ng + geom_point() \n\ng + geom_line()\n\ng + geom_line() + geom_point() \n```\n\n```{r}\nbase$Month\n\nmes5 <- base$Month == 5\n\ndadosMes5 <- base[ mes5 ,]\n\n#mean(base$Temp)\n\ng <- ggplot( dadosMes5 , aes(  Wind ,Temp)  ) \n\ng + geom_point()\n\n```\n\n```{r}\n\n\nmes7 <- base$Month == 7\n\ndadosMes7 <- base[ mes7 ,]\n\n#mean(base$Temp)\n\ng <- ggplot( dadosMes7 , aes(  Wind ,Temp)  ) \n\ng + geom_point() + geom_line()\n\n```\n\n\n```{r}\n\ng <- ggplot( base , aes(  Wind ,Temp , colour = factor(Month))  ) \n\ng + geom_point() + geom_line() + facet_grid( . ~ Month)\n\ng + geom_point() + geom_line() + facet_grid(  Month ~ .) \n\n```\n\n",
+    "created" : 1491160626303.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "625599453",
+    "id" : "34E9FA9E",
+    "lastKnownWriteTime" : 1491163169,
+    "last_content_update" : 1491163175914,
+    "path" : "~/GitHub/introR_20170401/dia2/plots.Rmd",
+    "project_path" : "dia2/plots.Rmd",
+    "properties" : {
+        "last_setup_crc32" : "191A521Ebb338d19",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
