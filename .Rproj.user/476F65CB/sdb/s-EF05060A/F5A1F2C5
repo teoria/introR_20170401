@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1491079168150.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F5A1F2C5",
+    "lastKnownWriteTime" : 8243121639319928838,
+    "last_content_update" : 1491079168150,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "9EEC61F7",
+        "caption" : "dfGrande",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=dfGrande&cache_key=9EEC61F7",
+        "displayedObservations" : 35,
+        "environment" : "",
+        "object" : "dfGrande",
+        "preview" : 0,
+        "totalObservations" : 35,
+        "variables" : 5
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

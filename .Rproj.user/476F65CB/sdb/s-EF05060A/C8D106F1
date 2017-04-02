@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(datasets)\n\nbase <- mtcars\n\nhead(base)\n?mtcars\n\nstr(base)\n\n\nplot( base$wt , base$mpg)\nplot( base$hp , base$mpg)\nplot ( base$cyl , base$mpg  )\n\npairs(base)\n\neconomicos <- base$mpg > 30\n\nbase[ economicos , ]\n\n\nsummary(base$mpg)\ndesvioPadrao <- sd(base$mpg)\nmedia <- mean(base$mpg)\nmedia\ndesvioPadrao\n\nlimiar <- media - desvioPadrao\n\n\ncarroRuim <- base$mpg < limiar\n\nbase[ carroRuim , ]\n\nlibrary(dplyr)\nlibrary(nycflights13)\nairlines\nairports\nplanes\n\n\ndim(flights )\n\ndim(flights %>% anti_join(planes, \"tailnum\"))\ndim(flights %>% left_join(planes, \"tailnum\"))\n\nsummary(flights$tailnum)\n\n\nsum(is.na(flights$tailnum))\nsdim(flights)\nnames(flights)\n",
+    "created" : 1491080107196.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "89988954",
+    "id" : "C8D106F1",
+    "lastKnownWriteTime" : 1491082726,
+    "last_content_update" : 1491084078454,
+    "path" : "~/GitHub/introR_20170401/dia1/exemplo8.R",
+    "project_path" : "dia1/exemplo8.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
